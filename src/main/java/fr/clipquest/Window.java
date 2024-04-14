@@ -12,7 +12,6 @@ public class Window extends Stage {
     public Window(String title) {
         super();
         setTitle(title);
-        this.show();
     }
 
     public void show(Controller controller) {

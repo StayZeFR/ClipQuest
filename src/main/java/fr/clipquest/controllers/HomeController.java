@@ -9,13 +9,7 @@ import java.util.Objects;
 
 public class HomeController extends Controller {
     @Override
-    public void view() {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/fr/clipquest/views/HomeView.fxml")));
-            this.window.setScene(new Scene(root));
-            this.window.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public void init() {
+        this.render("HomeView");
     }
 }
