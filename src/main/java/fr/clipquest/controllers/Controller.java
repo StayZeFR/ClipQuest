@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 public abstract class Controller {
 
     protected Window window;
-    protected Scene scene;
+
+    public Controller() {
+    }
 
     public void setWindow(Window window) {
         this.window = window;
