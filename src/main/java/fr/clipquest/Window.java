@@ -16,7 +16,7 @@ public class Window extends Stage {
 
     public void show(Controller controller) {
         controller.setWindow(this);
-        controller.view();
+        controller.init();
     }
 
 }
