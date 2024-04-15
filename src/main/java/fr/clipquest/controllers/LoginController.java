@@ -1,6 +1,7 @@
 package fr.clipquest.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -23,6 +24,8 @@ public class LoginController extends Controller {
     private PasswordField passwordField;
     @FXML
     private TextField passwordVisibleField;
+    @FXML
+    private Button loginButton;
 
     @FXML
     public void initialize() {
@@ -32,6 +35,9 @@ public class LoginController extends Controller {
         DropShadow shadow = new DropShadow();
         this.eyeIcon.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> eyeIcon.setEffect(shadow));
         this.eyeIcon.addEventHandler(MouseEvent.MOUSE_EXITED, event -> eyeIcon.setEffect(null));
+
+        this.loginButton.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> loginButton.setStyle("-fx-background-color: #16a085;"));
+        this.loginButton.addEventHandler(MouseEvent.MOUSE_EXITED, event -> loginButton.setStyle("-fx-background-color: #1abc9c;"));
 
         this.eyeIcon.setOnMouseClicked(event -> {
             if (this.passwordField.isVisible()) {

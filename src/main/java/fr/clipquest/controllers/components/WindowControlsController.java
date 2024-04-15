@@ -2,6 +2,7 @@ package fr.clipquest.controllers.components;
 
 import fr.clipquest.Window;
 import fr.clipquest.controllers.Controller;
+import fr.clipquest.utils.Session;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,8 @@ public class WindowControlsController extends Controller {
     private ImageView closeIcon;
     @FXML
     private ImageView minimizeIcon;
+    @FXML
+    private ImageView settingsIcon;
 
     @FXML
     public void initialize() {
@@ -25,6 +28,12 @@ public class WindowControlsController extends Controller {
         this.minimizeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/minimize.png"))));
         this.minimizeIcon.setOnMouseClicked(event -> {
             this.window.setIconified(true);
+        });
+
+        this.settingsIcon.setVisible(Session.getInstance() != null);
+        this.settingsIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/settings.png"))));
+        this.settingsIcon.setOnMouseClicked(event -> {
+            //this.window.show("SettingsView");
         });
     }
 }

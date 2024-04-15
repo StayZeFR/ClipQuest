@@ -3,22 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clipquest.controllers.RegisterController">
    <children>
       <fx:include source="components/WindowControlsView.fxml" AnchorPane.rightAnchor="0" />
-      <TextField layoutX="195.0" layoutY="113.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
-      <PasswordField id="passwordField" layoutX="195.0" layoutY="168.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
-      <PasswordField id="confirmPasswordField" layoutX="195.0" layoutY="222.0" prefHeight="41.0" prefWidth="211.0" promptText="Retype your password" />
+      <TextField focusTraversable="false" layoutX="195.0" layoutY="113.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
+      <PasswordField id="passwordField" focusTraversable="false" layoutX="195.0" layoutY="168.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
+      <PasswordField id="confirmPasswordField" focusTraversable="false" layoutX="195.0" layoutY="222.0" prefHeight="41.0" prefWidth="211.0" promptText="Retype your password" />
       <Button fx:id="registerButton" layoutX="221.0" layoutY="322.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Register" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Button>
+      </Button>
       <Label fx:id="alreadyConnected" alignment="CENTER" layoutX="195.0" layoutY="285.0" prefHeight="21.0" prefWidth="211.0" text="Already connected ?" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Label>
+      </Label>
       <TextField layoutX="195.0" layoutY="60.0" prefHeight="41.0" prefWidth="211.0" promptText="Username" />
       <ImageView fx:id="passwordFieldEyeIcon" fitHeight="21.0" fitWidth="28.0" layoutX="372.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="confirmPasswordFieldEyeIcon" fitHeight="21.0" fitWidth="28.0" layoutX="372.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />

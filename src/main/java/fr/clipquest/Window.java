@@ -1,6 +1,7 @@
 package fr.clipquest;
 
 import fr.clipquest.controllers.Controller;
+import fr.clipquest.utils.SystemTrayUtil;
 import fr.clipquest.utils.WindowDragger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 public class Window extends Stage {
 
@@ -29,6 +29,10 @@ public class Window extends Stage {
 
     public void setMain() {
         main = this;
+    }
+
+    public void setMinimizeIcon(String icon) {
+        SystemTrayUtil.initSystemTray(this.getTitle(), icon);
     }
 
     private void render(String view) {
