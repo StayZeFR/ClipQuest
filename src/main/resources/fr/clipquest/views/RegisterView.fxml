@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -8,9 +9,9 @@
    <children>
       <fx:include source="components/WindowControlsView.fxml" AnchorPane.rightAnchor="0" />
       <TextField layoutX="195.0" layoutY="113.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
-      <PasswordField layoutX="195.0" layoutY="168.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
-      <PasswordField layoutX="195.0" layoutY="222.0" prefHeight="41.0" prefWidth="211.0" promptText="Retype your password" />
-      <Button layoutX="221.0" layoutY="322.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Register" textFill="WHITE">
+      <PasswordField id="passwordField" layoutX="195.0" layoutY="168.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
+      <PasswordField id="confirmPasswordField" layoutX="195.0" layoutY="222.0" prefHeight="41.0" prefWidth="211.0" promptText="Retype your password" />
+      <Button fx:id="registerButton" layoutX="221.0" layoutY="322.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
@@ -19,5 +20,7 @@
             <Font name="System Bold" size="13.0" />
          </font></Label>
       <TextField layoutX="195.0" layoutY="60.0" prefHeight="41.0" prefWidth="211.0" promptText="Username" />
+      <ImageView fx:id="passwordFieldEyeIcon" fitHeight="21.0" fitWidth="28.0" layoutX="372.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="confirmPasswordFieldEyeIcon" fitHeight="21.0" fitWidth="28.0" layoutX="372.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
