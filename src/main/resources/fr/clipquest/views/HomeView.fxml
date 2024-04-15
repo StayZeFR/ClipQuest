@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="297.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="297.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clipquest.controllers.HomeController">
    <children>
       <Button fx:id="test" layoutX="167.0" layoutY="107.0" mnemonicParsing="false" text="Click" />
    </children>

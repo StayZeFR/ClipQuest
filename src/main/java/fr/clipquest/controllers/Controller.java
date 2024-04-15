@@ -2,6 +2,7 @@ package fr.clipquest.controllers;
 
 import fr.clipquest.Window;
 import fr.clipquest.utils.Parameters;
+import fr.clipquest.utils.WindowDragger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,6 +44,7 @@ public abstract class Controller {
             loader.setController(this.getInstance());
             Parent root = loader.load();
             this.window.setScene(new Scene(root));
+            WindowDragger.addDragListeners(this.window.getScene(), this.window);
             this.window.show();
         } catch (IOException e) {
             e.printStackTrace();
