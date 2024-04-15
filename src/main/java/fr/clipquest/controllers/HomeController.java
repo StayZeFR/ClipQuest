@@ -1,24 +1,26 @@
 package fr.clipquest.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.IOException;
-import java.util.Objects;
+import javafx.scene.control.Button;
 
 public class HomeController extends Controller {
 
+    @FXML
+    private Button test;
+
+    public HomeController() {
+        super("HomeView");
+    }
+
     @Override
     public void init() {
+        this.test.setOnAction(event -> {
+            this.window.show(RegisterController.class);
+        });
+    }
 
-        this.render("HomeView");
-
-
-
-
+    @Override
+    protected Controller getInstance() {
+        return this;
     }
 }

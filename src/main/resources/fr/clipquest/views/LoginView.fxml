@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <PasswordField id="PasswordField" alignment="CENTER" layoutX="197.0" layoutY="180.0" prefHeight="41.0" prefWidth="211.0" promptText="Password" />
-      <Button id="SignInButton" layoutX="221.0" layoutY="320.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Sign In" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <TextField id="EmailTextField" alignment="CENTER" layoutX="195.0" layoutY="119.0" prefHeight="41.0" prefWidth="211.0" promptText="Email" />
-      <Hyperlink id="FPasswordHyperLink" alignment="CENTER" layoutX="195.0" layoutY="275.0" prefHeight="23.0" prefWidth="211.0" text="Forgot password ?" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Hyperlink>
-      <ImageView id="LoginIcon" fitHeight="81.0" fitWidth="136.0" layoutX="234.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
-      <Hyperlink id="FPasswordHyperLink" alignment="CENTER" layoutX="195.0" layoutY="238.0" prefHeight="23.0" prefWidth="211.0" text="Still not registered ?" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Hyperlink>
-   </children>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="600.0">
+
 </AnchorPane>

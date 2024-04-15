@@ -8,12 +8,19 @@ public class LoginController extends Controller {
 
     @FXML
     private ImageView LoginIcon;
+
+    public LoginController() {
+        super("LoginView");
+    }
+
     @Override
     public void init() {
-
-        this.render("LoginView");
         // Image image = new Image("file:src/main/resources/fr/clipquest/assets/images/login.png");
         // LoginIcon.setImage(image);
+    }
 
+    @Override
+    protected Controller getInstance() {
+        return this;
     }
 }

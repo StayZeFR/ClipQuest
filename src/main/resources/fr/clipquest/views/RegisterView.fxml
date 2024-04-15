@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clipquest.views.RegisterView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="195.0" layoutY="93.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
       <PasswordField layoutX="195.0" layoutY="159.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
