@@ -8,19 +8,10 @@ public class HomeController extends Controller {
     @FXML
     private Button test;
 
-    public HomeController() {
-        super("HomeView");
-    }
-
-    @Override
-    public void init() {
+    @FXML
+    private void initialize() {
         this.test.setOnAction(event -> {
-            this.window.show(RegisterController.class);
+            this.window.show("RegisterView");
         });
-    }
-
-    @Override
-    protected Controller getInstance() {
-        return this;
     }
 }

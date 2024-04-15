@@ -8,19 +8,10 @@ public class RegisterController extends Controller {
     @FXML
     private Label alreadyConnected;
 
-    public RegisterController() {
-        super("RegisterView");
-    }
-
-    @Override
-    public void init() {
+    @FXML
+    public void initialize() {
         this.alreadyConnected.setOnMouseClicked(event -> {
-            this.window.show(LoginController.class);
+            this.window.show("LoginView");
         });
-    }
-
-    @Override
-    protected Controller getInstance() {
-        return this;
     }
 }

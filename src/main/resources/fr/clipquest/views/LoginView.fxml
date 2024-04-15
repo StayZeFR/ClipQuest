@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clipquest.controllers.LoginController">
    <children>
+      <fx:include source="components/WindowControlsView.fxml" AnchorPane.rightAnchor="0" />
       <PasswordField fx:id="passwordField" layoutX="195.0" layoutY="163.0" prefHeight="41.0" prefWidth="211.0" promptText="Password" />
       <TextField layoutX="195.0" layoutY="101.0" prefHeight="41.0" prefWidth="211.0" promptText="Email or Username" />
       <Button layoutX="221.0" layoutY="266.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Button" textFill="WHITE">

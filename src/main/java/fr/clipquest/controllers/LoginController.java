@@ -16,19 +16,13 @@ public class LoginController extends Controller {
     private Label stillNotConnected;
     @FXML
     private ImageView eyeIcon;
-
     @FXML
     private PasswordField passwordField;
 
-
-    public LoginController() {
-        super("LoginView");
-    }
-
-    @Override
-    public void init() {
+    @FXML
+    public void initialize() {
         this.stillNotConnected.setOnMouseClicked(event -> {
-            this.window.show(RegisterController.class);
+            this.window.show("RegisterView");
         });
 
         eyeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/eye.png"))));
@@ -39,10 +33,5 @@ public class LoginController extends Controller {
         eyeIcon.addEventHandler(MouseEvent.MOUSE_EXITED, event -> eyeIcon.setEffect(null));
 
 
-    }
-
-    @Override
-    protected Controller getInstance() {
-        return this;
     }
 }

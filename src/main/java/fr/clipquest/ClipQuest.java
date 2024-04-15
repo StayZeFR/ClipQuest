@@ -9,9 +9,10 @@ public class ClipQuest extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Window window = new Window();
+        window.setMain();
         window.initStyle(StageStyle.UNDECORATED);
         window.setResizable(false);
-        window.show(HomeController.class);
+        window.show("HomeView");
     }
 
     public static void main(String[] args) {
