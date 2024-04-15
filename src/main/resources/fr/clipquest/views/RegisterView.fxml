@@ -6,8 +6,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #2b303b, #20232a);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="195.0" layoutY="93.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
-      <PasswordField layoutX="195.0" layoutY="159.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
+      <TextField layoutX="195.0" layoutY="113.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your email" />
+      <PasswordField layoutX="195.0" layoutY="168.0" prefHeight="41.0" prefWidth="211.0" promptText="Enter your password" />
       <PasswordField layoutX="195.0" layoutY="222.0" prefHeight="41.0" prefWidth="211.0" promptText="Retype your password" />
       <Button layoutX="221.0" layoutY="322.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Register" textFill="WHITE">
          <font>
@@ -17,5 +17,6 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
+      <TextField layoutX="195.0" layoutY="60.0" prefHeight="41.0" prefWidth="211.0" promptText="Username" />
    </children>
 </AnchorPane>
