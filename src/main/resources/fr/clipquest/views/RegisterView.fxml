@@ -13,7 +13,7 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
-      <Label alignment="CENTER" layoutX="195.0" layoutY="285.0" prefHeight="21.0" prefWidth="211.0" text="Already connected ?" textFill="WHITE">
+      <Label fx:id="alreadyConnected" alignment="CENTER" layoutX="195.0" layoutY="285.0" prefHeight="21.0" prefWidth="211.0" text="Already connected ?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
