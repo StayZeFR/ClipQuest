@@ -1,11 +1,17 @@
 package fr.clipquest;
 
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
 import fr.clipquest.controllers.Controller;
-import fr.clipquest.utils.SystemTrayUtil;
+import fr.clipquest.utils.BackgroundTask;
+import fr.clipquest.utils.SystemTray;
 import fr.clipquest.utils.WindowDragger;
+import fr.clipquest.utils.listeners.GlobalKeyListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,11 +34,17 @@ public class Window extends Stage {
     }
 
     public void setMain() {
+        try {
+            GlobalScreen.registerNativeHook();
+        } catch (NativeHookException e) {
+            throw new RuntimeException(e);
+        }
+        GlobalScreen.addNativeKeyListener(new GlobalKeyListener());
         main = this;
     }
 
     public void setMinimizeIcon(String icon) {
-        SystemTrayUtil.initSystemTray(this.getTitle(), icon);
+        SystemTray.initSystemTray(this.getTitle(), icon);
     }
 
     private void render(String view) {

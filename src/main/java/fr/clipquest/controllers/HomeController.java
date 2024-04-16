@@ -1,7 +1,9 @@
 package fr.clipquest.controllers;
 
+import fr.clipquest.Window;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.StageStyle;
 
 public class HomeController extends Controller {
 
@@ -11,7 +13,7 @@ public class HomeController extends Controller {
     @FXML
     private void initialize() {
         this.test.setOnAction(event -> {
-            this.window.show("RegisterView");
+            window.show("RegisterView");
         });
     }
 }

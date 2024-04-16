@@ -1,25 +1,24 @@
 package fr.clipquest.utils;
 
 import fr.clipquest.Window;
+import javafx.application.Platform;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
 
-public class SystemTrayUtil {
+public class SystemTray {
 
     private static final String ICON_PATH = "/fr/clipquest/assets/images/";
-    private static boolean menuOpen = false;
 
     public static void initSystemTray(String title, String icon) {
-        if (SystemTray.isSupported()) {
-            Image image = Toolkit.getDefaultToolkit().getImage(Objects.requireNonNull(SystemTrayUtil.class.getResource(ICON_PATH + icon)));
+        if (java.awt.SystemTray.isSupported()) {
+            Image image = Toolkit.getDefaultToolkit().getImage(Objects.requireNonNull(SystemTray.class.getResource(ICON_PATH + icon)));
             TrayIcon trayIcon = new TrayIcon(image, title);
             trayIcon.setImageAutoSize(true);
 
-            SystemTray tray = SystemTray.getSystemTray();
+            java.awt.SystemTray tray = java.awt.SystemTray.getSystemTray();
 
             try {
                 tray.add(trayIcon);
@@ -27,9 +26,11 @@ public class SystemTrayUtil {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON1) {
-
+                            Platform.runLater(() -> {
+                                Window.getMain().setIconified(false);
+                                Window.getMain().toFront();
+                            });
                         } else if (e.getButton() == MouseEvent.BUTTON3) {
-
                         }
                     }
                 });

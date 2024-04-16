@@ -22,7 +22,7 @@ public class WindowControlsController extends Controller {
     public void initialize() {
         this.closeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/close.png"))));
         this.closeIcon.setOnMouseClicked(event -> {
-            this.window.close();
+            this.window.hide();
         });
 
         this.minimizeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/minimize.png"))));

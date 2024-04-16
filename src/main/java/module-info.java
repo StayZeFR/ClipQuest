@@ -2,6 +2,7 @@ module fr.clipquest {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires com.github.kwhat.jnativehook;
 
     opens fr.clipquest to javafx.fxml;
     opens fr.clipquest.controllers to javafx.fxml;
