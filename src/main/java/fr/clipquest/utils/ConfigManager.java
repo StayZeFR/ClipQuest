@@ -10,9 +10,9 @@ public class ConfigManager {
     private final Properties properties;
     private final String path;
 
-    public ConfigManager(String configFilePath) {
+    public ConfigManager(String path) {
         instance = this;
-        this.path = configFilePath;
+        this.path = path;
         properties = new Properties();
         this.loadConfig();
     }
@@ -23,6 +23,7 @@ public class ConfigManager {
             if (!file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
+                this.setDefaultConfig();
             }
             InputStream input = new FileInputStream(path);
             properties.load(input);
@@ -31,16 +32,23 @@ public class ConfigManager {
         }
     }
 
+    private void setDefaultConfig() {
+        this.properties.setProperty("username", "");
+        this.properties.setProperty("email", "");
+        this.properties.setProperty("token", "");
+        this.saveConfig();
+    }
+
     public String getProperty(String key) {
-        return properties.getProperty(key);
+        return this.properties.getProperty(key);
     }
 
     public void setProperty(String key, String value) {
-        properties.setProperty(key, value);
+        this.properties.setProperty(key, value);
     }
 
     public boolean containsKey(String key) {
-        return properties.containsKey(key);
+        return this.properties.containsKey(key);
     }
 
     public void saveConfig() {

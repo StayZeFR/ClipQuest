@@ -15,12 +15,16 @@ public class ClipQuest extends Application {
     public void start(Stage stage) throws Exception {
         new ConfigManager(Config.CONFIG_PATH.getValue() + Config.CONFIG_FILE.getValue());
 
-        Window window = new Window();
+        Window window = new Window(Config.NAME.getValue());
         window.setMain();
         window.initStyle(StageStyle.UNDECORATED);
         window.setResizable(false);
         // window.setMinimizeIcon("login.png");
-        window.show("HomeView");
+        if (ConfigManager.getInstance().getProperty("token").isEmpty()) {
+            window.show("LoginView");
+        } else {
+            window.show("HomeView");
+        }
     }
 
     public static void main(String[] args) {
