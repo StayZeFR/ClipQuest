@@ -1,8 +1,7 @@
 package fr.clipquest.controllers.components;
 
-import fr.clipquest.Window;
 import fr.clipquest.controllers.Controller;
-import fr.clipquest.utils.Session;
+import fr.clipquest.utils.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

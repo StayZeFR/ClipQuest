@@ -23,19 +23,25 @@ public class ConfigManager {
             if (!file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
-                this.setDefaultConfig();
             }
             InputStream input = new FileInputStream(path);
             properties.load(input);
+            this.checkDefaultConfig();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void setDefaultConfig() {
-        this.properties.setProperty("username", "");
-        this.properties.setProperty("email", "");
-        this.properties.setProperty("token", "");
+    private void checkDefaultConfig() {
+        if (!this.properties.containsKey("username")) {
+            this.properties.setProperty("username", "");
+        }
+        if (!this.properties.containsKey("email")) {
+            this.properties.setProperty("email", "");
+        }
+        if (!this.properties.containsKey("token")) {
+            this.properties.setProperty("token", "");
+        }
         this.saveConfig();
     }
 

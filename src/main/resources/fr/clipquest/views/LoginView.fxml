@@ -10,7 +10,7 @@
       <fx:include source="components/WindowControlsView.fxml" AnchorPane.rightAnchor="0" />
       <PasswordField fx:id="passwordField" focusTraversable="false" layoutX="195.0" layoutY="163.0" prefHeight="41.0" prefWidth="211.0" promptText="Password" />
       <TextField fx:id="usernameField" layoutX="195.0" layoutY="101.0" prefHeight="41.0" prefWidth="211.0" promptText="Email or Username" />
-      <Button fx:id="loginButton" layoutX="221.0" layoutY="266.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Sign In" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="221.0" layoutY="266.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="159.0" style="-fx-background-color: #1abc9c;" text="Sign In" textFill="WHITE" onAction="#login">
       </Button>
       <Label fx:id="stillNotConnected" alignment="CENTER" layoutX="195.0" layoutY="227.0" prefHeight="21.0" prefWidth="211.0" text="Still not registered ?" textFill="WHITE">
       </Label>

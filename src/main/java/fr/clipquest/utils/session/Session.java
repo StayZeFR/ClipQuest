@@ -1,4 +1,4 @@
-package fr.clipquest.utils;
+package fr.clipquest.utils.session;
 
 public class Session {
 

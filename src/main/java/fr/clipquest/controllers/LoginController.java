@@ -1,5 +1,8 @@
 package fr.clipquest.controllers;
 
+import fr.clipquest.models.dao.UserDAO;
+import fr.clipquest.models.entities.UserEntity;
+import fr.clipquest.tools.HashTool;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.List;
 import java.util.Objects;
 
 public class LoginController extends Controller {
@@ -31,7 +35,6 @@ public class LoginController extends Controller {
     public void initialize() {
         this.eyeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/eye.png"))));
 
-        // Ajouter l'effet d'ombre
         DropShadow shadow = new DropShadow();
         this.eyeIcon.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> eyeIcon.setEffect(shadow));
         this.eyeIcon.addEventHandler(MouseEvent.MOUSE_EXITED, event -> eyeIcon.setEffect(null));
@@ -58,7 +61,7 @@ public class LoginController extends Controller {
         });
 
         this.usernameField.setOnKeyPressed(event -> {
-            if (event.getCode().toString().equals("ENTER")) {
+            if (event.getCode().toString().equals("ENTER") || event.getCode().toString().equals("TAB")) {
                 this.passwordField.requestFocus();
                 this.passwordField.positionCaret(this.passwordField.getText().length());
             }
@@ -67,6 +70,28 @@ public class LoginController extends Controller {
         this.stillNotConnected.setOnMouseClicked(event -> {
             this.window.show("RegisterView");
         });
-
     }
+
+    public void login() {
+        String username = this.usernameField.getText();
+        String password = this.passwordField.getText();
+        System.out.println("Username: " + username + " Password: " + password);
+        if (!username.isEmpty() || !password.isEmpty()) {
+            UserDAO userDAO = new UserDAO();
+            List<UserEntity> users = userDAO.get("username", username);
+            if (!users.isEmpty()) {
+                UserEntity user = users.getFirst();
+                if (HashTool.check(password, user.getPassword())) {
+                    this.window.show("HomeView");
+                } else {
+                    // TODO : Error message
+                    System.out.println("Invalid password");
+                }
+            } else {
+                // TODO : Error message
+                System.out.println("Invalid username");
+            }
+        }
+    }
+
 }

@@ -3,15 +3,12 @@ package fr.clipquest;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import fr.clipquest.controllers.Controller;
-import fr.clipquest.utils.BackgroundTask;
 import fr.clipquest.utils.SystemTray;
 import fr.clipquest.utils.WindowDragger;
 import fr.clipquest.utils.listeners.GlobalKeyListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;

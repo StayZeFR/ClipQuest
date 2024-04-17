@@ -1,9 +1,11 @@
 package fr.clipquest.models.entities;
 
 import fr.clipquest.utils.annotations.PrimaryKey;
+import fr.clipquest.utils.annotations.Table;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+@Table(name = "user")
 public class UserEntity extends Entity {
 
     @PrimaryKey
@@ -15,13 +17,13 @@ public class UserEntity extends Entity {
 
     private String password;
 
-    private Date created_at;
-    private Date updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 
     public UserEntity() {
     }
 
-    public UserEntity(int id, String username, String email, String password, Date created_at, Date updated_at) {
+    public UserEntity(int id, String username, String email, String password, LocalDateTime created_at, LocalDateTime updated_at) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -31,7 +33,7 @@ public class UserEntity extends Entity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -39,7 +41,7 @@ public class UserEntity extends Entity {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -47,7 +49,7 @@ public class UserEntity extends Entity {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -55,26 +57,26 @@ public class UserEntity extends Entity {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreated_at() {
+        return this.created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 
-    public Date getUpdated_at() {
-        return updated_at;
+    public LocalDateTime getUpdated_at() {
+        return this.updated_at;
     }
 
-    public void setUpdated_at(Date updated_at) {
+    public void setUpdated_at(LocalDateTime updated_at) {
         this.updated_at = updated_at;
     }
 
