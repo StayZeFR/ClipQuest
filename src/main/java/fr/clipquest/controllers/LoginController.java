@@ -22,6 +22,8 @@ import java.util.Objects;
 public class LoginController extends Controller {
 
     @FXML
+    private Label errorLabel;
+    @FXML
     private Label stillNotConnected;
     @FXML
     private ImageView eyeIcon;
@@ -81,6 +83,11 @@ public class LoginController extends Controller {
         });
     }
 
+    private void showErrorMessage(String message) {
+        this.errorLabel.setText(message);
+        this.errorLabel.setVisible(true);
+    }
+
     @FXML
     private void login() {
         String username = this.usernameField.getText();
@@ -95,12 +102,10 @@ public class LoginController extends Controller {
                     new Session(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), token);
                     this.window.show("HomeView");
                 } else {
-                    // TODO : Error message
-                    System.out.println("Invalid password");
+                    this.showErrorMessage("Invalid password!");
                 }
             } else {
-                // TODO : Error message
-                System.out.println("Invalid username");
+                this.showErrorMessage("Invalid username!");
             }
         }
     }

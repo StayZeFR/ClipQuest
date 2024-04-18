@@ -8,12 +8,7 @@ import javafx.stage.StageStyle;
 public class HomeController extends Controller {
 
     @FXML
-    private Button test;
-
-    @FXML
     private void initialize() {
-        this.test.setOnAction(event -> {
-            window.show("RegisterView");
-        });
+
     }
 }

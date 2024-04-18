@@ -21,7 +21,7 @@ import java.util.Objects;
 public class RegisterController extends Controller {
 
     @FXML
-    private Label registrationLabel;
+    private Label errorLabel;
     @FXML
     private Label alreadyConnected;
     @FXML
@@ -100,6 +100,11 @@ public class RegisterController extends Controller {
         });
     }
 
+    private void showErrorMessage(String message) {
+        this.errorLabel.setText(message);
+        this.errorLabel.setVisible(true);
+    }
+
     @FXML
     private void register() {
         String username = this.usernameField.getText().trim();
@@ -117,16 +122,13 @@ public class RegisterController extends Controller {
                     new Session(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), TokenTool.generate());
                     this.window.show("HomeView");
                 } else {
-                    // TODO : Error message
-                    System.out.println("User already exists");
+                    this.showErrorMessage("User already exists!");
                 }
             } else {
-                // TODO : Error message
-                System.out.println("Passwords do not match");
+                this.showErrorMessage("Passwords do not match!");
             }
         } else {
-            // TODO : Error message
-            System.out.println("Please fill all fields");
+            this.showErrorMessage("Please fill all fields!");
         }
     }
 }

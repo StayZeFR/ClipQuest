@@ -107,7 +107,14 @@ public abstract class DAO<T extends Entity> {
         return id;
     }
 
-    private ResultSet executeQuery(String query) {
+    protected void callProcedure(String procedure, List<Object> parameters) {
+        StringBuilder query = new StringBuilder("CALL " + procedure + "(");
+        query.append("?, ".repeat(parameters.size()));
+        query = new StringBuilder(query.substring(0, query.length() - 2) + ")");
+        this.executeUpdate(query.toString(), parameters);
+    }
+
+    protected ResultSet executeQuery(String query) {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -119,7 +126,7 @@ public abstract class DAO<T extends Entity> {
         return resultSet;
     }
 
-    private ResultSet executeQuery(String query, List<Object> parameters) {
+    protected ResultSet executeQuery(String query, List<Object> parameters) {
         ResultSet resultSet = null;
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
@@ -133,7 +140,7 @@ public abstract class DAO<T extends Entity> {
         return resultSet;
     }
 
-    private void executeUpdate(String query) {
+    protected void executeUpdate(String query) {
         PreparedStatement statement = null;
         try {
             statement = this.connection.prepareStatement(query);
@@ -143,7 +150,7 @@ public abstract class DAO<T extends Entity> {
         }
     }
 
-    private void executeUpdate(String query, List<Object> parameters) {
+    protected void executeUpdate(String query, List<Object> parameters) {
         PreparedStatement statement = null;
         try {
             statement = this.connection.prepareStatement(query);
@@ -156,7 +163,7 @@ public abstract class DAO<T extends Entity> {
         }
     }
 
-    private List<T> toEntities(ResultSet resultSet) {
+    protected List<T> toEntities(ResultSet resultSet) {
         List<T> entities = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -169,7 +176,7 @@ public abstract class DAO<T extends Entity> {
         return entities;
     }
 
-    private T toEntity(ResultSet resultSet) {
+    protected T toEntity(ResultSet resultSet) {
         T entity = this.createInstance(this.clazz);
         try {
             Field[] fields = this.clazz.getDeclaredFields();

@@ -12,10 +12,12 @@ public class TokenTool {
     }
 
     public static void save(int user, String token) {
+        String mac = MACAddressTool.get();
         TokenDAO dao = new TokenDAO();
+        dao.cleanTokens(user, mac);
         TokenEntity entity = new TokenEntity();
         entity.setIdUser(user);
-        entity.setComputer(MACAddressTool.get());
+        entity.setComputer(mac);
         entity.setToken(token);
         dao.create(entity);
     }
