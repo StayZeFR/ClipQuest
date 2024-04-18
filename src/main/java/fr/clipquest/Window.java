@@ -34,7 +34,7 @@ public class Window extends Stage {
         try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         GlobalScreen.addNativeKeyListener(new GlobalKeyListener());
         main = this;

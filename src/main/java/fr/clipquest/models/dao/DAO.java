@@ -2,6 +2,7 @@ package fr.clipquest.models.dao;
 
 import fr.clipquest.models.Database;
 import fr.clipquest.models.entities.Entity;
+import fr.clipquest.utils.annotations.PrimaryKey;
 import fr.clipquest.utils.annotations.Table;
 
 import java.lang.reflect.Constructor;
@@ -38,7 +39,7 @@ public abstract class DAO<T extends Entity> {
         String query = "SELECT * FROM " + this.table + " WHERE";
         Field[] fields = this.clazz.getDeclaredFields();
         for (Field field : fields) {
-            if (field.isAnnotationPresent(fr.clipquest.utils.annotations.PrimaryKey.class)) {
+            if (field.isAnnotationPresent(PrimaryKey.class)) {
                 query += " " + field.getName() + " = ?";
                 break;
             }
@@ -61,18 +62,24 @@ public abstract class DAO<T extends Entity> {
         StringBuilder query = new StringBuilder("INSERT INTO " + this.table + " (");
         Field[] fields = this.clazz.getDeclaredFields();
         for (Field field : fields) {
-            query.append(field.getName()).append(", ");
+            if (!field.isAnnotationPresent(PrimaryKey.class)) {
+                query.append(field.getName()).append(", ");
+            }
         }
         query = new StringBuilder(query.substring(0, query.length() - 2) + ") VALUES (");
         for (Field field : fields) {
-            query.append("?, ");
+            if (!field.isAnnotationPresent(PrimaryKey.class)) {
+                query.append("?, ");
+            }
         }
         query = new StringBuilder(query.substring(0, query.length() - 2) + ")");
         List<Object> parameters = new ArrayList<>();
         for (Field field : fields) {
             field.setAccessible(true);
             try {
-                parameters.add(field.get(entity));
+                if (!field.isAnnotationPresent(PrimaryKey.class)) {
+                    parameters.add(field.get(entity));
+                }
             } catch (IllegalAccessException | IllegalArgumentException e) {
                 e.printStackTrace();
             }
@@ -84,6 +91,20 @@ public abstract class DAO<T extends Entity> {
     }
 
     public void delete(T entity) {
+    }
+
+    public Object getLastInsertId() {
+        String query = "SELECT LAST_INSERT_ID()";
+        ResultSet resultSet = this.executeQuery(query);
+        Object id = null;
+        try {
+            while (resultSet.next()) {
+                id = resultSet.getObject(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 
     private ResultSet executeQuery(String query) {
@@ -99,10 +120,9 @@ public abstract class DAO<T extends Entity> {
     }
 
     private ResultSet executeQuery(String query, List<Object> parameters) {
-        PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = this.connection.prepareStatement(query);
+            PreparedStatement statement = this.connection.prepareStatement(query);
             for (int i = 0; i < parameters.size(); i++) {
                 statement.setObject(i + 1, parameters.get(i));
             }

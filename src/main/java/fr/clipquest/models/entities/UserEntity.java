@@ -32,6 +32,12 @@ public class UserEntity extends Entity {
         this.updated_at = updated_at;
     }
 
+    public UserEntity(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public int getId() {
         return this.id;
     }

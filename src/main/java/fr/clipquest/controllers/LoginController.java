@@ -3,6 +3,9 @@ package fr.clipquest.controllers;
 import fr.clipquest.models.dao.UserDAO;
 import fr.clipquest.models.entities.UserEntity;
 import fr.clipquest.tools.HashTool;
+import fr.clipquest.tools.TokenTool;
+import fr.clipquest.utils.ConfigManager;
+import fr.clipquest.utils.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -67,21 +70,29 @@ public class LoginController extends Controller {
             }
         });
 
+        this.passwordField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.login();
+            }
+        });
+
         this.stillNotConnected.setOnMouseClicked(event -> {
             this.window.show("RegisterView");
         });
     }
 
-    public void login() {
+    @FXML
+    private void login() {
         String username = this.usernameField.getText();
-        String password = this.passwordField.getText();
-        System.out.println("Username: " + username + " Password: " + password);
+        String password = (this.passwordField.isVisible() ? this.passwordField.getText() : this.passwordVisibleField.getText());
         if (!username.isEmpty() || !password.isEmpty()) {
             UserDAO userDAO = new UserDAO();
             List<UserEntity> users = userDAO.get("username", username);
             if (!users.isEmpty()) {
                 UserEntity user = users.getFirst();
                 if (HashTool.check(password, user.getPassword())) {
+                    String token = TokenTool.generate();
+                    new Session(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), token);
                     this.window.show("HomeView");
                 } else {
                     // TODO : Error message

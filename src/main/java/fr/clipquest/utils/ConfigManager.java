@@ -42,7 +42,7 @@ public class ConfigManager {
         if (!this.properties.containsKey("token")) {
             this.properties.setProperty("token", "");
         }
-        this.saveConfig();
+        this.save();
     }
 
     public String getProperty(String key) {
@@ -57,7 +57,7 @@ public class ConfigManager {
         return this.properties.containsKey(key);
     }
 
-    public void saveConfig() {
+    public void save() {
         try (OutputStream output = new FileOutputStream(path)) {
             properties.store(output, null);
         } catch (IOException e) {
