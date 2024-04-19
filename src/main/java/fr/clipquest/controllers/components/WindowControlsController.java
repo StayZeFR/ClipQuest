@@ -5,6 +5,7 @@ import fr.clipquest.utils.session.Session;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 
 import java.util.Objects;
 
@@ -16,23 +17,34 @@ public class WindowControlsController extends Controller {
     private ImageView minimizeIcon;
     @FXML
     private ImageView settingsIcon;
+    @FXML
+    private ImageView homeIcon;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         this.closeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/close.png"))));
-        this.closeIcon.setOnMouseClicked(event -> {
-            this.window.hide();
-        });
+        this.closeIcon.setOnMouseClicked(event -> this.window.hide());
 
         this.minimizeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/minimize.png"))));
-        this.minimizeIcon.setOnMouseClicked(event -> {
-            this.window.setIconified(true);
-        });
+        this.minimizeIcon.setOnMouseClicked(event -> this.window.setIconified(true));
 
-        this.settingsIcon.setVisible(Session.getInstance() != null);
-        this.settingsIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/settings.png"))));
-        this.settingsIcon.setOnMouseClicked(event -> {
-            //this.window.show("SettingsView");
-        });
+        if (this.session.getCurrentView().equals("HOME")) {
+            this.settingsIcon.setVisible(true);
+            this.settingsIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/settings.png"))));
+            this.settingsIcon.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    this.window.show("SettingsView");
+                } else if (event.getButton() == MouseButton.SECONDARY) {
+                    System.out.println("right click");
+                }
+            });
+        } else if (this.session.getCurrentView().equals("SETTINGS")) {
+            this.homeIcon.setVisible(true);
+            this.homeIcon.setImage(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/fr/clipquest/assets/images/home.png"))));
+            this.homeIcon.setOnMouseClicked(event -> {
+                this.window.show("HomeView");
+            });
+        }
     }
+
 }

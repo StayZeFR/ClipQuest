@@ -5,6 +5,10 @@ module fr.clipquest {
     requires com.github.kwhat.jnativehook;
     requires jBCrypt;
     requires java.sql;
+    requires org.bytedeco.javacv;
+    requires org.bytedeco.ffmpeg;
+    requires org.bytedeco.opencv;
+    requires jcodec;
 
     opens fr.clipquest to javafx.fxml;
     opens fr.clipquest.controllers to javafx.fxml;

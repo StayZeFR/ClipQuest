@@ -27,7 +27,11 @@ public class SystemTray {
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON1) {
                             Platform.runLater(() -> {
-                                Window.getMain().setIconified(false);
+                                if (Window.getMain().isIconified()) {
+                                    Window.getMain().setIconified(false);
+                                } else {
+                                    Window.getMain().show();
+                                }
                                 Window.getMain().toFront();
                             });
                         } else if (e.getButton() == MouseEvent.BUTTON3) {

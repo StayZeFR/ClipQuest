@@ -66,7 +66,7 @@ public class LoginController extends Controller {
         });
 
         this.usernameField.setOnKeyPressed(event -> {
-            if (event.getCode().toString().equals("ENTER") || event.getCode().toString().equals("TAB")) {
+            if (event.getCode().toString().equals("ENTER")) {
                 this.passwordField.requestFocus();
                 this.passwordField.positionCaret(this.passwordField.getText().length());
             }
@@ -99,7 +99,7 @@ public class LoginController extends Controller {
                 UserEntity user = users.getFirst();
                 if (HashTool.check(password, user.getPassword())) {
                     String token = TokenTool.generate();
-                    new Session(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), token);
+                    Session.getInstance().create(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), token);
                     this.window.show("HomeView");
                 } else {
                     this.showErrorMessage("Invalid password!");

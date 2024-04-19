@@ -114,6 +114,22 @@ public abstract class DAO<T extends Entity> {
         this.executeUpdate(query.toString(), parameters);
     }
 
+    protected Object callFunction(String function, List<Object> parameters) {
+        StringBuilder query = new StringBuilder("SELECT " + function + "(");
+        query.append("?, ".repeat(parameters.size()));
+        query = new StringBuilder(query.substring(0, query.length() - 2) + ")");
+        ResultSet resultSet = this.executeQuery(query.toString(), parameters);
+        Object result = null;
+        try {
+            while (resultSet.next()) {
+                result = resultSet.getObject(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     protected ResultSet executeQuery(String query) {
         PreparedStatement statement = null;
         ResultSet resultSet = null;

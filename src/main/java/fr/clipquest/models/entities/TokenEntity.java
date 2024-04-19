@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 @Table(name = "token")
 public class TokenEntity extends Entity {
 
-    @PrimaryKey
-    private int id;
     private int id_user;
     private String computer;
     private String token;
@@ -18,20 +16,11 @@ public class TokenEntity extends Entity {
     public TokenEntity() {
     }
 
-    public TokenEntity(int id, int id_user, String computer, String token, LocalDateTime created_at) {
-        this.id = id;
+    public TokenEntity(int id_user, String computer, String token, LocalDateTime created_at) {
         this.id_user = id_user;
         this.computer = computer;
         this.token = token;
         this.created_at = created_at;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getIdUser() {

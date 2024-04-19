@@ -7,6 +7,7 @@
     <children>
         <ImageView fx:id="closeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="84.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0" />
         <ImageView fx:id="minimizeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="49.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="10.0" />
-      <ImageView fx:id="settingsIcon" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="10.0" />
+      <ImageView fx:id="settingsIcon" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="10.0" />
+      <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false" />
     </children>
 </AnchorPane>

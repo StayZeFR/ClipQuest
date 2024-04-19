@@ -33,6 +33,9 @@ public class ConfigManager {
     }
 
     private void checkDefaultConfig() {
+        if (!this.properties.containsKey("id")) {
+            this.properties.setProperty("id", "0");
+        }
         if (!this.properties.containsKey("username")) {
             this.properties.setProperty("username", "");
         }

@@ -98,6 +98,35 @@ public class RegisterController extends Controller {
                 this.confirmPasswordField.positionCaret(this.passwordField.getText().length());
             }
         });
+
+        this.usernameField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.emailField.requestFocus();
+                this.emailField.positionCaret(this.emailField.getText().length());
+            }
+        });
+
+        this.emailField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.passwordField.requestFocus();
+                this.passwordField.positionCaret(this.passwordField.getText().length());
+            }
+        });
+
+        this.passwordField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.confirmPasswordField.requestFocus();
+                this.confirmPasswordField.positionCaret(this.confirmPasswordField.getText().length());
+            }
+        });
+
+        this.confirmPasswordField.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.register();
+            }
+        });
+
+        this.usernameField.requestFocus();
     }
 
     private void showErrorMessage(String message) {
@@ -108,7 +137,7 @@ public class RegisterController extends Controller {
     @FXML
     private void register() {
         String username = this.usernameField.getText().trim();
-        String email = this.emailField.getText().trim();
+        String email = this.emailField.getText().trim().toLowerCase();
         String password = (this.passwordField.isVisible() ? this.passwordField.getText() : this.passwordVisibleField.getText()).trim();
         String confirmPassword = (this.confirmPasswordField.isVisible() ? this.confirmPasswordField.getText() : this.confirmPasswordVisibleField.getText()).trim();
 
@@ -119,7 +148,7 @@ public class RegisterController extends Controller {
                     UserEntity user = new UserEntity(username, email, HashTool.hash(password));
                     dao.create(user);
                     user = dao.get("username", username).getFirst();
-                    new Session(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), TokenTool.generate());
+                    Session.getInstance().create(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), TokenTool.generate());
                     this.window.show("HomeView");
                 } else {
                     this.showErrorMessage("User already exists!");
